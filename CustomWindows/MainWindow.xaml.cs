@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using Microsoft.Win32;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -24,6 +25,15 @@ namespace CustomWindows
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void Browse_Files(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog fileDialog = new OpenFileDialog();
+            fileDialog.DefaultExt = ".txt"; // Required file extension 
+            fileDialog.Filter = "Text documents (.txt)|*.txt"; // Optional file extensions
+
+            fileDialog.ShowDialog();
         }
     }
 }
