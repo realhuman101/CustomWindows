@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CustomWindows"
+        xmlns:extToolkit="http://schemas.xceed.com/wpf/xaml/toolkit"
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800"
         ResizeMode="CanMinimize">
@@ -11,7 +12,12 @@
         <Label Content="Custom Windows" HorizontalAlignment="Center" Margin="0,-1,0,0" VerticalAlignment="Top" FontSize="20px"/>
         <TabControl Margin="0,36,0,0">
             <TabItem Header="Home">
-                <Grid Background="#FFE5E5E5"/>
+                <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="93*"/>
+                        <ColumnDefinition Width="701*"/>
+                    </Grid.ColumnDefinitions>
+                </Grid>
             </TabItem>
             <TabItem Header="Custom Scripts">
                 <Grid Background="#FFE5E5E5" Height="370">
@@ -20,7 +26,6 @@
                         <ColumnDefinition Width="388*"/>
                     </Grid.ColumnDefinitions>
                     <Button Grid.Column="1" Content="Add" HorizontalAlignment="Left" Margin="379,340,0,0" VerticalAlignment="Top" RenderTransformOrigin="15.769,0.954" Width="387"/>
-                    <Menu Grid.Column="1" Margin="10,8,484,195"/>
                     <GridSplitter Grid.Column="1" HorizontalAlignment="Left" Height="370" Margin="361,0,0,0" VerticalAlignment="Center" Width="5" Background="Gray"/>
                     <Label Grid.Column="1" Content="Add Script" HorizontalAlignment="Left" Margin="379,10,0,0" VerticalAlignment="Top" FontSize="15px"/>
                     <Rectangle Grid.Column="1" HorizontalAlignment="Left" Height="1" Margin="379,39,0,0" Stroke="Black" VerticalAlignment="Top" Width="387" RenderTransformOrigin="0.5,0.5">
@@ -33,9 +38,10 @@
                             </TransformGroup>
                         </Rectangle.RenderTransform>
                     </Rectangle>
-                    <TextBox Grid.Column="1" HorizontalAlignment="Left" Margin="388,74,0,0" TextWrapping="Wrap" Text="Script File" VerticalAlignment="Top" Width="307"/>
-                    <Label Grid.Column="1" Content="Command" HorizontalAlignment="Left" Margin="379,48,0,0" VerticalAlignment="Top"/>
+                    <extToolkit:WatermarkTextBox Watermark="Enter First Name" Grid.Column="1" HorizontalAlignment="Left" Margin="388,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="307"/>
+                    <Label Grid.Column="1" Content="Script" HorizontalAlignment="Left" Margin="378,48,0,0" VerticalAlignment="Top"/>
                     <Button Grid.Column="1" Content="Browse" HorizontalAlignment="Left" Margin="700,72,0,0" VerticalAlignment="Top" Width="66" Click="Browse_Files"/>
+                    <Label Grid.Column="1" Content="Command" HorizontalAlignment="Left" Margin="379,107,0,0" VerticalAlignment="Top"/>
                 </Grid>
             </TabItem>
         </TabControl>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Win32;
+using System;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -9,6 +10,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.Diagnostics;
 
 namespace CustomWindows
 {
@@ -30,10 +32,16 @@ namespace CustomWindows
         private void Browse_Files(object sender, RoutedEventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
-            fileDialog.DefaultExt = ".txt"; // Required file extension 
-            fileDialog.Filter = "Text documents (.txt)|*.txt"; // Optional file extensions
+            //fileDialog.DefaultExt = ".txt"; // Required file extension 
+            //fileDialog.Filter = "Text documents (.txt)|*.txt"; // Optional file extensions
 
-            fileDialog.ShowDialog();
-        }
+            bool? fileResult = fileDialog.ShowDialog();
+
+            if (fileResult == true)
+            {
+                string fileName = fileDialog.FileName;
+                Trace.WriteLine(fileName);
+            }
+        }        
     }
 }
