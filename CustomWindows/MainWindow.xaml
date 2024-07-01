@@ -19,7 +19,7 @@
                     </Grid.ColumnDefinitions>
                 </Grid>
             </TabItem>
-            <TabItem Header="Custom Scripts">
+            <TabItem Header="Custom Scripts" Height="20" VerticalAlignment="Top">
                 <Grid Background="#FFE5E5E5" Height="370">
                     <Grid.ColumnDefinitions>
                         <ColumnDefinition Width="9*"/>

@@ -46,7 +46,7 @@ namespace CustomWindows
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            String? SelectedItem = (sender as ComboBox).SelectedItem as string;
+            string? SelectedItem = (e.AddedItems[0] as ComboBoxItem).Content as string;
 
             switch (SelectedItem)
             {
@@ -54,11 +54,11 @@ namespace CustomWindows
                     //MessageBox.Show("No language selected"); // Debugging
                     scriptCmdTxt.Text = "";
                     break;
-                case "python":
+                case "Python":
                     //MessageBox.Show("Python"); // Debugging
                     scriptCmdTxt.Text = "python";
                     break;
-                case "c#":
+                case "C#":
                     //MessageBox.Show("C#"); // Debugging
                     scriptCmdTxt.Text = "dotnet-script";
                     break;
