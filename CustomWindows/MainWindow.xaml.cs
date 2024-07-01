@@ -19,6 +19,8 @@ namespace CustomWindows
     /// </summary>
     public partial class MainWindow : Window
     {
+        private bool customSetComboBox = true;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -46,6 +48,11 @@ namespace CustomWindows
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            if (!customSetComboBox)
+            {
+                return;
+            }
+
             string? SelectedItem = (e.AddedItems[0] as ComboBoxItem).Content as string;
 
             switch (SelectedItem)
@@ -71,7 +78,9 @@ namespace CustomWindows
 
         private void scriptCmdTxt_TextChanged(object sender, TextChangedEventArgs e)
         {
-            execSelection.SelectedIndex = -1;
+            execSelection.SelectedValue = "Custom";
+
+            customSetComboBox = false;
         }
     }
 }
