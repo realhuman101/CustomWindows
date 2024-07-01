@@ -51,10 +51,11 @@ namespace CustomWindows
             switch (SelectedItem)
             {
                 case null:
-                    MessageBox.Show("No language selected");
+                    //MessageBox.Show("No language selected"); // Debugging
+                    scriptCmdTxt.Text = "";
                     break;
                 case "python":
-                    MessageBox.Show("Python");
+                    //MessageBox.Show("Python"); // Debugging
                     scriptCmdTxt.Text = "python";
                     break;
             }

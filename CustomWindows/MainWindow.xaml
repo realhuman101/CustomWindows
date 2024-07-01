@@ -44,7 +44,10 @@
                     <extToolkit:WatermarkTextBox Watermark="Script Execution Command" Grid.Column="1" HorizontalAlignment="Left" Margin="524,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="242" Name="scriptCmdTxt" TextChanged="scriptCmdTxt_TextChanged"/>
                     <Label Grid.Column="1" Content="Command" HorizontalAlignment="Left" Margin="379,107,0,0" VerticalAlignment="Top"/>
                     <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="388,130,0,0" VerticalAlignment="Top" Width="131" SelectionChanged="ComboBox_SelectionChanged" x:Name="execSelection">
+                        <ComboBoxItem Content="C#"/>
                         <ComboBoxItem Content="Python"/>
+                        <ComboBoxItem Content="C++"/>
+                        <ComboBoxItem Content="C"/>
                     </ComboBox>
                 </Grid>
             </TabItem>
