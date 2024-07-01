@@ -13,6 +13,8 @@
 
 ## Introduction
 
+> **NOTE:** This is still a ***work in progress***!
+
 Using [WPF](https://en.wikipedia.org/wiki/Windows_Presentation_Foundation), this project adds extra functionality to Windows, and allows others to do the same. The project is still in its early stages, but the goal is to make Windows more customizable and user-friendly.
 
 ## Contributing
