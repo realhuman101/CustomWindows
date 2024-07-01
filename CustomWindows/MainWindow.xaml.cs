@@ -42,6 +42,11 @@ namespace CustomWindows
                 string fileName = fileDialog.FileName;
                 Trace.WriteLine(fileName);
             }
-        }        
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
