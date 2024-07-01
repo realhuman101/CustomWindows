@@ -40,7 +40,7 @@ namespace CustomWindows
             if (fileResult == true)
             {
                 string fileName = fileDialog.FileName;
-                MessageBox.Show(fileName);
+                scriptPathTxt.Text = fileName;
             }
         }
 
