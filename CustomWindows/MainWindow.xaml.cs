@@ -58,6 +58,14 @@ namespace CustomWindows
                     //MessageBox.Show("Python"); // Debugging
                     scriptCmdTxt.Text = "python";
                     break;
+                case "c#":
+                    //MessageBox.Show("C#"); // Debugging
+                    scriptCmdTxt.Text = "dotnet-script";
+                    break;
+                //case "java":
+                //    //MessageBox.Show("Java"); // Debugging
+                //    scriptCmdTxt.Text = "java";
+                //    break;
             }
         }
 

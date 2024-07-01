@@ -48,6 +48,8 @@
                         <ComboBoxItem Content="Python"/>
                         <ComboBoxItem Content="C++"/>
                         <ComboBoxItem Content="C"/>
+                        <ComboBoxItem Content="Java"/>
+                        <ComboBoxItem Content="NodeJS"/>
                     </ComboBox>
                 </Grid>
             </TabItem>
