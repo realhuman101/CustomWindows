@@ -40,7 +40,7 @@ namespace CustomWindows
             if (fileResult == true)
             {
                 string fileName = fileDialog.FileName;
-                Trace.WriteLine(fileName);
+                MessageBox.Show(fileName);
             }
         }
 
@@ -51,12 +51,18 @@ namespace CustomWindows
             switch (SelectedItem)
             {
                 case null:
-                    Trace.WriteLine("No language selected");
+                    MessageBox.Show("No language selected");
                     break;
                 case "python":
-                    Trace.WriteLine("Python");
+                    MessageBox.Show("Python");
+                    scriptCmdTxt.Text = "python";
                     break;
             }
+        }
+
+        private void scriptCmdTxt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            execSelection.SelectedIndex = -1;
         }
     }
 }

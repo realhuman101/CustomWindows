@@ -41,9 +41,9 @@
                     <extToolkit:WatermarkTextBox Watermark="Enter Script Path" Grid.Column="1" HorizontalAlignment="Left" Margin="388,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="307"/>
                     <Label Grid.Column="1" Content="Script" HorizontalAlignment="Left" Margin="378,48,0,0" VerticalAlignment="Top"/>
                     <Button Grid.Column="1" Content="Browse" HorizontalAlignment="Left" Margin="700,72,0,0" VerticalAlignment="Top" Width="66" Click="Browse_Files"/>
-                    <extToolkit:WatermarkTextBox Watermark="Script Execution Command" Grid.Column="1" HorizontalAlignment="Left" Margin="524,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="242"/>
+                    <extToolkit:WatermarkTextBox Watermark="Script Execution Command" Grid.Column="1" HorizontalAlignment="Left" Margin="524,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="242" Name="scriptCmdTxt" TextChanged="scriptCmdTxt_TextChanged"/>
                     <Label Grid.Column="1" Content="Command" HorizontalAlignment="Left" Margin="379,107,0,0" VerticalAlignment="Top"/>
-                    <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="388,130,0,0" VerticalAlignment="Top" Width="131" SelectionChanged="ComboBox_SelectionChanged">
+                    <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="388,130,0,0" VerticalAlignment="Top" Width="131" SelectionChanged="ComboBox_SelectionChanged" x:Name="execSelection">
                         <ComboBoxItem Content="Python"/>
                     </ComboBox>
                 </Grid>
