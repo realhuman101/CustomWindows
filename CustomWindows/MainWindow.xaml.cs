@@ -46,7 +46,17 @@ namespace CustomWindows
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            String? SelectedItem = (sender as ComboBox).SelectedItem as string;
 
+            switch (SelectedItem)
+            {
+                case null:
+                    Trace.WriteLine("No language selected");
+                    break;
+                case "python":
+                    Trace.WriteLine("Python");
+                    break;
+            }
         }
     }
 }
