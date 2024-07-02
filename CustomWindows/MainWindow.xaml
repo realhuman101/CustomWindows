@@ -63,7 +63,7 @@
                             </TransformGroup>
                         </Rectangle.RenderTransform>
                     </Rectangle>
-                    <ListBox Margin="0,49,431,132" Grid.Column="1" SelectionChanged="ListBox_SelectionChanged">
+                    <ListBox Margin="0,49,431,132" Grid.Column="1" x:Name="ScriptList">
                         <ListBoxItem Content="Script #1"/>
                     </ListBox>
                     <Label Grid.Column="1" Content="Script Name" HorizontalAlignment="Left" Margin="379,48,0,0" VerticalAlignment="Top"/>

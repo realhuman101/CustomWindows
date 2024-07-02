@@ -45,7 +45,7 @@ namespace CustomWindows
             }
         }
 
-        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs? e)
         {
             string? SelectedItem = null;
             try
@@ -111,14 +111,19 @@ namespace CustomWindows
 
         private void scriptPathTxt_TextChanged(object sender, TextChangedEventArgs e)
         {
-            ComboBox_SelectionChanged(sender, e);
+            SelectionChangedEventArgs args = new SelectionChangedEventArgs(ComboBox.SelectionChangedEvent, new List<ComboBoxItem>(), new List<ComboBoxItem>());
+            ComboBox_SelectionChanged(sender, args);
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             if (scriptNameTxt.Text.Trim() != "" && scriptPathTxt.Text.Trim() != "" && scriptCmdTxt.Text.Trim() != "")
             {
-                // add item here
+                ListBoxItem script = new ListBoxItem();
+                script.Content = scriptNameTxt.Text;
+                script.ToolTip = scriptCmdTxt.Text;
+
+                ScriptList.Items.Add(script);
             } else
             {
                 MessageBox.Show("Please fill in all fields");
