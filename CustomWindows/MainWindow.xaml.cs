@@ -66,6 +66,11 @@ namespace CustomWindows
                 //    scriptCmdTxt.Text = "java";
                 //    break;
             }
+
+            if (SelectedItem != null)
+            {
+                execSelection.SelectedValue = SelectedItem;
+            }
         }
 
         private void scriptCmdTxt_TextChanged(object sender, TextChangedEventArgs e)
