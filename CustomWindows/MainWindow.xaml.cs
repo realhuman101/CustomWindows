@@ -18,6 +18,8 @@ namespace CustomWindows
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
+        private bool customWrite = true;
+
         public MainWindow()
         {
             InitializeComponent();
@@ -58,16 +60,19 @@ namespace CustomWindows
             switch (SelectedItem)
             {
                 case null:
-                    //MessageBox.Show("No language selected"); // Debugging
+                    MessageBox.Show("No language selected"); // Debugging
                     scriptCmdTxt.Text = "";
+                    customWrite = false;
                     break;
                 case "Python":
-                    //MessageBox.Show("Python"); // Debugging
+                    MessageBox.Show("Python"); // Debugging
                     scriptCmdTxt.Text = "python";
+                    customWrite = false;
                     break;
                 case "C#":
-                    //MessageBox.Show("C#"); // Debugging
+                    MessageBox.Show("C#"); // Debugging
                     scriptCmdTxt.Text = "dotnet-script";
+                    customWrite = false;
                     break;
                 //case "java":
                 //    //MessageBox.Show("Java"); // Debugging
@@ -78,7 +83,13 @@ namespace CustomWindows
 
         private void scriptCmdTxt_TextChanged(object sender, TextChangedEventArgs e)
         {
-            execSelection.SelectedValue = "Custom";
+            if (customWrite)
+            {
+                execSelection.SelectedValue = "Custom";
+            } else
+            {
+                customWrite = true;
+            }
         }
     }
 }
