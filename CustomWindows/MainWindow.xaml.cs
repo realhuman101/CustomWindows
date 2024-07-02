@@ -45,7 +45,15 @@ namespace CustomWindows
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string? SelectedItem = (e.AddedItems[0] as ComboBoxItem).Content as string;
+            string? SelectedItem = null;
+            try
+            {
+                SelectedItem = (e.AddedItems[0] as ComboBoxItem).Content as string;
+            }
+            catch (IndexOutOfRangeException)
+            {
+                SelectedItem = null;
+            }
 
             switch (SelectedItem)
             {
@@ -65,11 +73,6 @@ namespace CustomWindows
                 //    //MessageBox.Show("Java"); // Debugging
                 //    scriptCmdTxt.Text = "java";
                 //    break;
-            }
-
-            if (SelectedItem != null)
-            {
-                execSelection.SelectedValue = SelectedItem;
             }
         }
 
