@@ -43,8 +43,6 @@ namespace CustomWindows
                 string fileName = fileDialog.FileName;
                 scriptPathTxt.Text = fileName;
             }
-
-            ComboBox_SelectionChanged(sender, null);
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -109,6 +107,11 @@ namespace CustomWindows
                 //MessageBox.Show("test"); // Debugging
                 customWrite = true;
             }
+        }
+
+        private void scriptPathTxt_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            ComboBox_SelectionChanged(sender, e);
         }
     }
 }
