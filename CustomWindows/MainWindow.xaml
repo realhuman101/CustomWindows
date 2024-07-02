@@ -26,7 +26,7 @@
                         <ColumnDefinition Width="9*"/>
                         <ColumnDefinition Width="388*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="1" Content="Add" HorizontalAlignment="Left" Margin="379,340,0,0" VerticalAlignment="Top" RenderTransformOrigin="15.769,0.954" Width="387"/>
+                    <Button Grid.Column="1" Content="Add" HorizontalAlignment="Left" Margin="379,340,0,0" VerticalAlignment="Top" RenderTransformOrigin="15.769,0.954" Width="387" Click="Button_Click"/>
                     <GridSplitter Grid.Column="1" HorizontalAlignment="Left" Height="370" Margin="361,0,0,0" VerticalAlignment="Center" Width="5" Background="Gray"/>
                     <Label Grid.Column="1" Content="Add Script" HorizontalAlignment="Left" Margin="379,10,0,0" VerticalAlignment="Top" FontSize="15px"/>
                     <Rectangle Grid.Column="1" HorizontalAlignment="Left" Height="1" Margin="379,39,0,0" Stroke="Black" VerticalAlignment="Top" Width="387" RenderTransformOrigin="0.5,0.5">
@@ -39,12 +39,12 @@
                             </TransformGroup>
                         </Rectangle.RenderTransform>
                     </Rectangle>
-                    <extToolkit:WatermarkTextBox Watermark="Enter Script Path" Grid.Column="1" HorizontalAlignment="Left" Margin="388,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="307" x:Name="scriptPathTxt" TextChanged="scriptPathTxt_TextChanged"/>
-                    <Label Grid.Column="1" Content="Script" HorizontalAlignment="Left" Margin="378,48,0,0" VerticalAlignment="Top"/>
-                    <Button Grid.Column="1" Content="Browse" HorizontalAlignment="Left" Margin="700,72,0,0" VerticalAlignment="Top" Width="66" Click="Browse_Files"/>
-                    <extToolkit:WatermarkTextBox Watermark="Script Execution Command" Grid.Column="1" HorizontalAlignment="Left" Margin="524,129,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="242" x:Name="scriptCmdTxt" TextChanged="scriptCmdTxt_TextChanged"/>
-                    <Label Grid.Column="1" Content="Command" HorizontalAlignment="Left" Margin="379,107,0,0" VerticalAlignment="Top"/>
-                    <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="388,130,0,0" VerticalAlignment="Top" Width="131" SelectionChanged="ComboBox_SelectionChanged" x:Name="execSelection">
+                    <extToolkit:WatermarkTextBox Watermark="Enter Script Path" Grid.Column="1" HorizontalAlignment="Left" Margin="388,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="307" x:Name="scriptPathTxt" TextChanged="scriptPathTxt_TextChanged"/>
+                    <Label Grid.Column="1" Content="Script" HorizontalAlignment="Left" Margin="378,104,0,0" VerticalAlignment="Top"/>
+                    <Button Grid.Column="1" Content="Browse" HorizontalAlignment="Left" Margin="700,128,0,0" VerticalAlignment="Top" Width="66" Click="Browse_Files"/>
+                    <extToolkit:WatermarkTextBox Watermark="Script Execution Command" Grid.Column="1" HorizontalAlignment="Left" Margin="524,185,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="242" x:Name="scriptCmdTxt" TextChanged="scriptCmdTxt_TextChanged"/>
+                    <Label Grid.Column="1" Content="Command" HorizontalAlignment="Left" Margin="379,163,0,0" VerticalAlignment="Top"/>
+                    <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="388,186,0,0" VerticalAlignment="Top" Width="131" SelectionChanged="ComboBox_SelectionChanged" x:Name="execSelection">
                         <ComboBoxItem Content="C#"/>
                         <ComboBoxItem Content="Python"/>
                         <ComboBoxItem Content="C++"/>
@@ -66,6 +66,8 @@
                     <ListBox Margin="0,49,431,132" Grid.Column="1" SelectionChanged="ListBox_SelectionChanged">
                         <ListBoxItem Content="Script #1"/>
                     </ListBox>
+                    <Label Grid.Column="1" Content="Script Name" HorizontalAlignment="Left" Margin="379,48,0,0" VerticalAlignment="Top"/>
+                    <extToolkit:WatermarkTextBox Watermark="Enter Script Name" Grid.Column="1" HorizontalAlignment="Left" Margin="388,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="378" x:Name="scriptNameTxt"/>
                 </Grid>
             </TabItem>
         </TabControl>
