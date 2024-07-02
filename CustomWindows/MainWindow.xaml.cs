@@ -114,9 +114,15 @@ namespace CustomWindows
             ComboBox_SelectionChanged(sender, e);
         }
 
-        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e)
         {
-
+            if (scriptNameTxt.Text.Trim() != "" && scriptPathTxt.Text.Trim() != "" && scriptCmdTxt.Text.Trim() != "")
+            {
+                // add item here
+            } else
+            {
+                MessageBox.Show("Please fill in all fields");
+            }
         }
     }
 }
