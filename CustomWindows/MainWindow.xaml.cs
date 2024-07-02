@@ -83,8 +83,16 @@ namespace CustomWindows
                     scriptCmdTxt.Text = "javac " + filePath + "; java " + filePath.Substring(0, filePath.Length - 2);
                     break;
                 case "C++":
-                    //MessageBox.Show("Java"); // Debugging
-                    scriptCmdTxt.Text = "gcc " + filePath + "-o output.exe;output.exe";
+                    //MessageBox.Show("C++"); // Debugging
+                    scriptCmdTxt.Text = "gcc " + filePath + "-o output.exe; output.exe";
+                    break;
+                case "C":
+                    //MessageBox.Show("C"); // Debugging
+                    scriptCmdTxt.Text = "gcc " + filePath + "-o output.exe; output.exe";
+                    break;
+                case "NodeJS":
+                    //MessageBox.Show("Javascript"); // Debugging
+                    scriptCmdTxt.Text = "node " + filePath;
                     break;
             }
         }
