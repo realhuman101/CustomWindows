@@ -43,6 +43,8 @@ namespace CustomWindows
                 string fileName = fileDialog.FileName;
                 scriptPathTxt.Text = fileName;
             }
+
+            ComboBox_SelectionChanged(sender, null);
         }
 
         private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -57,6 +59,8 @@ namespace CustomWindows
                 SelectedItem = null;
             }
 
+            string filePath = scriptPathTxt.Text;
+
             switch (SelectedItem)
             {
                 case null:
@@ -66,18 +70,22 @@ namespace CustomWindows
                 case "Python":
                     //MessageBox.Show("Python"); // Debugging
                     customWrite = false;
-                    scriptCmdTxt.Text = "python";
+                    scriptCmdTxt.Text = "python " + filePath;
                     break;
                 case "C#":
                     //MessageBox.Show("C#"); // Debugging
                     customWrite = false;
-                    scriptCmdTxt.Text = "dotnet-script";
+                    scriptCmdTxt.Text = "dotnet-script " + filePath;
                     //MessageBox.Show(customWrite.ToString());
                     break;
-                //case "java":
-                //    //MessageBox.Show("Java"); // Debugging
-                //    scriptCmdTxt.Text = "java";
-                //    break;
+                case "Java":
+                    //MessageBox.Show("Java"); // Debugging
+                    scriptCmdTxt.Text = "javac " + filePath + "; java " + filePath.Substring(0, filePath.Length - 2);
+                    break;
+                case "C++":
+                    //MessageBox.Show("Java"); // Debugging
+                    scriptCmdTxt.Text = "gcc " + filePath + "-o output.exe;output.exe";
+                    break;
             }
         }
 
