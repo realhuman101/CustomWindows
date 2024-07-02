@@ -60,19 +60,20 @@ namespace CustomWindows
             switch (SelectedItem)
             {
                 case null:
-                    MessageBox.Show("No language selected"); // Debugging
+                    //MessageBox.Show("No language selected"); // Debugging
                     scriptCmdTxt.Text = "";
                     customWrite = false;
                     break;
                 case "Python":
-                    MessageBox.Show("Python"); // Debugging
+                    //MessageBox.Show("Python"); // Debugging
                     scriptCmdTxt.Text = "python";
                     customWrite = false;
                     break;
                 case "C#":
-                    MessageBox.Show("C#"); // Debugging
+                    //MessageBox.Show("C#"); // Debugging
                     scriptCmdTxt.Text = "dotnet-script";
                     customWrite = false;
+                    MessageBox.Show(customWrite.ToString());
                     break;
                 //case "java":
                 //    //MessageBox.Show("Java"); // Debugging
@@ -83,11 +84,13 @@ namespace CustomWindows
 
         private void scriptCmdTxt_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (customWrite)
+            MessageBox.Show(customWrite.ToString());
+            if (customWrite == true)
             {
                 execSelection.SelectedValue = "Custom";
             } else
             {
+                MessageBox.Show("test");
                 customWrite = true;
             }
         }
