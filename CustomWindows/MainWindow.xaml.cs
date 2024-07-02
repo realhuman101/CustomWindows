@@ -113,5 +113,10 @@ namespace CustomWindows
         {
             ComboBox_SelectionChanged(sender, e);
         }
+
+        private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }
