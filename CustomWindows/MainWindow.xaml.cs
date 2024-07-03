@@ -167,10 +167,24 @@ namespace CustomWindows
             ComboBox_SelectionChanged(sender, args);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e) // add script
+        private void Add_Script(object sender, RoutedEventArgs e)
         {
             if (scriptNameTxt.Text.Trim() != "" && scriptPathTxt.Text.Trim() != "" && scriptCmdTxt.Text.Trim() != "")
             {
+                // Check names are unique
+                if (ScriptList.Items.Count > 0)
+                {
+                    IList<ListBoxItem> items = ScriptList.Items.Cast<ListBoxItem>().ToList();
+                    foreach (ListBoxItem item in items)
+                    {
+                        if (item.Content.ToString() == scriptNameTxt.Text)
+                        {
+                            MessageBox.Show("Name already exists");
+                            return;
+                        }
+                    }
+                }
+
                 ListBoxItem script = new ListBoxItem();
                 script.Content = scriptNameTxt.Text;
                 script.ToolTip = scriptCmdTxt.Text;

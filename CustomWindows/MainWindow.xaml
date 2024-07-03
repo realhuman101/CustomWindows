@@ -26,7 +26,7 @@
                         <ColumnDefinition Width="9*"/>
                         <ColumnDefinition Width="388*"/>
                     </Grid.ColumnDefinitions>
-                    <Button Grid.Column="1" Content="Add" HorizontalAlignment="Left" Margin="379,323,0,0" VerticalAlignment="Top" RenderTransformOrigin="15.769,0.954" Width="387" Click="Button_Click"/>
+                    <Button Grid.Column="1" Content="Add" HorizontalAlignment="Left" Margin="379,323,0,0" VerticalAlignment="Top" RenderTransformOrigin="15.769,0.954" Width="387" Click="Add_Script"/>
                     <GridSplitter Grid.Column="1" HorizontalAlignment="Left" Height="370" Margin="361,0,0,0" VerticalAlignment="Center" Width="5" Background="Gray"/>
                     <Label Grid.Column="1" Content="Add Script" HorizontalAlignment="Left" Margin="379,10,0,0" VerticalAlignment="Top" FontSize="15px"/>
                     <Rectangle Grid.Column="1" HorizontalAlignment="Left" Height="1" Margin="379,39,0,0" Stroke="Black" VerticalAlignment="Top" Width="387" RenderTransformOrigin="0.5,0.5">
