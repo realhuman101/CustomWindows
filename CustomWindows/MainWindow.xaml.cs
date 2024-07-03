@@ -21,10 +21,17 @@ namespace CustomWindows
     {
         public string Name { get; set; }
         public string Cmd { get; set; }
+        public int Condition { get; set;}
+        public string ConditionRequirement { get; set; }
     }
     public class Scripts
     {
         public List<Script> AllScripts { get; set; }
+
+        public Scripts()
+        {
+            AllScripts = new List<Script>();
+        }
     }
 
     /// <summary>
@@ -37,6 +44,38 @@ namespace CustomWindows
         public MainWindow()
         {
             InitializeComponent();
+
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+            string fileName = "scripts.json";
+            string filePath = System.IO.Path.Combine(path, fileName);
+
+            if (File.Exists(filePath))
+            {
+                string jsonString = File.ReadAllText(filePath);
+                scripts = JsonSerializer.Deserialize<Scripts>(jsonString);
+
+                try
+                {
+                    string fileContents = System.IO.File.ReadAllText(fileName);
+                    Scripts FullScript = JsonSerializer.Deserialize<Scripts>(fileContents);
+
+                    if (FullScript.AllScripts != null)
+                    {
+                        foreach (Script script in FullScript.AllScripts)
+                        {
+                            string name = script.Name;
+                            string cmd = script.Cmd;
+
+                            ListBoxItem scriptItem = new ListBoxItem();
+                            scriptItem.Content = name;
+                            scriptItem.ToolTip = cmd;
+
+                            ScriptList.Items.Add(scriptItem);
+                        }
+                    }
+                }
+                catch (FileNotFoundException e) {}
+            }
         }
 
         private void CheckBox_Checked(object sender, RoutedEventArgs e)
@@ -96,11 +135,11 @@ namespace CustomWindows
                     break;
                 case "C++":
                     //MessageBox.Show("C++"); // Debugging
-                    scriptCmdTxt.Text = "gcc " + filePath + "-o output.exe; output.exe";
+                    scriptCmdTxt.Text = "gcc " + filePath + " -o output.exe; output.exe";
                     break;
                 case "C":
                     //MessageBox.Show("C"); // Debugging
-                    scriptCmdTxt.Text = "gcc " + filePath + "-o output.exe; output.exe";
+                    scriptCmdTxt.Text = "gcc " + filePath + " -o output.exe; output.exe";
                     break;
                 case "NodeJS":
                     //MessageBox.Show("Javascript"); // Debugging
