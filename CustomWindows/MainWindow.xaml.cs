@@ -185,11 +185,12 @@ namespace CustomWindows
 
         private void Delete_Selection(object sender, RoutedEventArgs e)
         {
-            ListBoxItem selectedItem = (ListBoxItem)ScriptList.SelectedItem;
-
-            if (selectedItem != null)
+            if (selectedItems != null)
             {
-                ScriptList.Items.Remove(selectedItem);
+                foreach (var item in ScriptList.SelectedItems)
+                {
+                    ScriptList.Items.Remove(item);
+                }
             }
         }
 

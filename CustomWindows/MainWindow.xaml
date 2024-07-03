@@ -63,7 +63,7 @@
                             </TransformGroup>
                         </Rectangle.RenderTransform>
                     </Rectangle>
-                    <ListBox Margin="0,49,431,132" Grid.Column="1" x:Name="ScriptList">
+                    <ListBox SelectionMode="Multiple" Margin="0,49,431,132" Grid.Column="1" x:Name="ScriptList">
                     </ListBox>
                     <Label Grid.Column="1" Content="Script Name" HorizontalAlignment="Left" Margin="379,48,0,0" VerticalAlignment="Top"/>
                     <extToolkit:WatermarkTextBox Watermark="Enter Script Name" Grid.Column="1" HorizontalAlignment="Left" Margin="388,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="378" x:Name="scriptNameTxt"/>
