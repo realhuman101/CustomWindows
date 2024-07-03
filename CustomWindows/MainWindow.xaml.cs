@@ -14,6 +14,7 @@ using System.Diagnostics;
 using System.Text.Json.Serialization;
 using System.IO;
 using System.Text.Json;
+using System.Linq;
 
 namespace CustomWindows
 {
@@ -223,7 +224,7 @@ namespace CustomWindows
                 //    }
                 //}
 
-                foreach (ListBoxItem item in ScriptList.SelectedItems.ToList())
+                foreach (ListBoxItem item in (ScriptList.SelectedItems as IEnumerable<ListBoxItem>))
                 {
                     ScriptList.Items.Remove(item);
                 }
