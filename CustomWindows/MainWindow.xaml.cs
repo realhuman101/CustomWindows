@@ -129,5 +129,15 @@ namespace CustomWindows
                 MessageBox.Show("Please fill in all fields");
             }
         }
+
+        private void Delete_Selection(object sender, RoutedEventArgs e)
+        {
+            ListBoxItem selectedItem = (ListBoxItem)ScriptList.SelectedItem;
+
+            if (selectedItem != null)
+            {
+                ScriptList.Items.Remove(selectedItem);
+            }
+        }
     }
 }
