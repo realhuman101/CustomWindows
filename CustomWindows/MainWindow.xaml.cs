@@ -185,9 +185,45 @@ namespace CustomWindows
 
         private void Delete_Selection(object sender, RoutedEventArgs e)
         {
-            if (selectedItems != null)
+            List<ListBoxItem> selected = new List<ListBoxItem>();
+
+            if (ScriptList.SelectedItems != null)
             {
-                foreach (var item in ScriptList.SelectedItems)
+                //// Select selected items
+                //foreach (ListBoxItem item in ScriptList.Items)
+                //{
+                //    if (ScriptList.items)
+                //    {
+                //        ScriptList.Items.Remove(item);
+                //        selected.Add(item);
+                //    }
+                //}
+                
+                //// Remove duplicates
+                //List<string> unique = new List<string>();
+                //foreach (ListBoxItem item in selected)
+                //{
+                //    string name = item.Name;
+                //    if (!unique.Contains(name))
+                //    {
+                //        unique.Add(name);
+                //    }
+                //}
+
+                //// Remove from file
+                //foreach (string name in unique)
+                //{
+                //    foreach (Script script in scripts.AllScripts)
+                //    {
+                //        if (script.Name == name)
+                //        {
+                //            scripts.AllScripts.Remove(script);
+                //            break;
+                //        }
+                //    }
+                //}
+
+                foreach (ListBoxItem item in ScriptList.SelectedItems.ToList())
                 {
                     ScriptList.Items.Remove(item);
                 }
