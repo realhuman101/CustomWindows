@@ -22,12 +22,17 @@ namespace CustomWindows
         public string Name { get; set; }
         public string Cmd { get; set; }
     }
+    public class Scripts
+    {
+        public List<Script> AllScripts { get; set; }
+    }
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window {
         private bool customWrite = true;
+        public Scripts scripts = new Scripts();
 
         public MainWindow()
         {
@@ -133,6 +138,8 @@ namespace CustomWindows
                 script.ToolTip = scriptCmdTxt.Text;
 
                 ScriptList.Items.Add(script);
+
+                Save_Script_To_File();
             } else
             {
                 MessageBox.Show("Please fill in all fields");
@@ -151,7 +158,7 @@ namespace CustomWindows
 
         private void Save_Script_To_File()
         {
-            string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData;
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
             string fileName = "scripts.json";
             string filePath = System.IO.Path.Combine(path, fileName);
 
@@ -159,14 +166,11 @@ namespace CustomWindows
             script.Name = scriptNameTxt.Text;
             script.Cmd = scriptCmdTxt.Text;
 
-            JsonSerializer serializer = new JsonSerializer();
-            serializer.NullValueHandling = NullValueHandling.Ignore;
+            scripts.AllScripts.Add(script);
+            
+            string serializer = JsonSerializer.Serialize(scripts);
 
-            using (StreamWriter sw = new StreamWriter(filePath))
-            using (JsonWriter writer = new JsonTextWriter(sw))
-            {
-                serializer.Serialize(writer, script);
-            }
+            System.IO.File.WriteAllText(filePath, serializer);
         }
     }
 }
