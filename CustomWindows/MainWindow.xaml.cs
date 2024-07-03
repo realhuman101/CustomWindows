@@ -77,11 +77,6 @@ namespace CustomWindows
             }
         }
 
-        private void CheckBox_Checked(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void Browse_Files(object sender, RoutedEventArgs e)
         {
             OpenFileDialog fileDialog = new OpenFileDialog();
