@@ -49,32 +49,30 @@ namespace CustomWindows
             string fileName = "scripts.json";
             string filePath = System.IO.Path.Combine(path, fileName);
 
+            //MessageBox.Show(filePath); // Debugging
+
             if (File.Exists(filePath))
             {
                 string jsonString = File.ReadAllText(filePath);
                 scripts = JsonSerializer.Deserialize<Scripts>(jsonString);
+                
+                string fileContents = System.IO.File.ReadAllText(filePath);
+                Scripts FullScript = JsonSerializer.Deserialize<Scripts>(fileContents);
 
-                try
+                if (FullScript.AllScripts != null)
                 {
-                    string fileContents = System.IO.File.ReadAllText(fileName);
-                    Scripts FullScript = JsonSerializer.Deserialize<Scripts>(fileContents);
-
-                    if (FullScript.AllScripts != null)
+                    foreach (Script script in FullScript.AllScripts)
                     {
-                        foreach (Script script in FullScript.AllScripts)
-                        {
-                            string name = script.Name;
-                            string cmd = script.Cmd;
+                        string name = script.Name;
+                        string cmd = script.Cmd;
 
-                            ListBoxItem scriptItem = new ListBoxItem();
-                            scriptItem.Content = name;
-                            scriptItem.ToolTip = cmd;
+                        ListBoxItem scriptItem = new ListBoxItem();
+                        scriptItem.Content = name;
+                        scriptItem.ToolTip = cmd;
 
-                            ScriptList.Items.Add(scriptItem);
-                        }
+                        ScriptList.Items.Add(scriptItem);
                     }
                 }
-                catch (FileNotFoundException e) {}
             }
         }
 
@@ -210,6 +208,8 @@ namespace CustomWindows
             string serializer = JsonSerializer.Serialize(scripts);
 
             System.IO.File.WriteAllText(filePath, serializer);
+
+            //MessageBox.Show("Script saved"); // Debugging
         }
     }
 }
