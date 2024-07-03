@@ -12,6 +12,8 @@ using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
 using System.Text.Json.Serialization;
+using System.IO;
+using System.Text.Json;
 
 namespace CustomWindows
 {
@@ -157,11 +159,14 @@ namespace CustomWindows
             script.Name = scriptNameTxt.Text;
             script.Cmd = scriptCmdTxt.Text;
 
-            string fileContent = JsonConvert.SerializeObject(script);
+            JsonSerializer serializer = new JsonSerializer();
+            serializer.NullValueHandling = NullValueHandling.Ignore;
 
-            System.IO.File.WriteAllText(filePath, "{\n");
-
-
+            using (StreamWriter sw = new StreamWriter(filePath))
+            using (JsonWriter writer = new JsonTextWriter(sw))
+            {
+                serializer.Serialize(writer, script);
+            }
         }
     }
 }
