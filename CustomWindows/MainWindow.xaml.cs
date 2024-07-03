@@ -190,7 +190,8 @@ namespace CustomWindows
 
             if (ScriptList.SelectedItems != null)
             {
-                foreach (ListBoxItem item in (ScriptList.SelectedItems as IEnumerable<ListBoxItem>))
+                IList<ListBoxItem> items = ScriptList.SelectedItems.Cast<ListBoxItem>().ToList();
+                foreach (ListBoxItem item in items)
                 {
                     ScriptList.Items.Remove(item);
                 }
