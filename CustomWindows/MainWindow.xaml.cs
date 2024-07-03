@@ -200,14 +200,20 @@ namespace CustomWindows
 
         private void Delete_Selection(object sender, RoutedEventArgs e)
         {
-            List<ListBoxItem> selected = new List<ListBoxItem>();
-
             if (ScriptList.SelectedItems != null)
             {
+                List<string> ToRemove = new List<string>();
                 IList<ListBoxItem> items = ScriptList.SelectedItems.Cast<ListBoxItem>().ToList();
                 foreach (ListBoxItem item in items)
                 {
                     ScriptList.Items.Remove(item);
+                    ToRemove.Add(item.Content.ToString());
+                }
+
+                foreach (string name in ToRemove)
+                {
+                    Script script = scripts.AllScripts.Find(x => x.Name == name);
+                    scripts.AllScripts.Remove(script);
                 }
             }
         }
