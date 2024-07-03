@@ -11,9 +11,16 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using System.Diagnostics;
+using System.Text.Json.Serialization;
 
 namespace CustomWindows
 {
+    public class Script
+    {
+        public string Name { get; set; }
+        public string Cmd { get; set; }
+    }
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
@@ -115,7 +122,7 @@ namespace CustomWindows
             ComboBox_SelectionChanged(sender, args);
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void Button_Click(object sender, RoutedEventArgs e) // add script
         {
             if (scriptNameTxt.Text.Trim() != "" && scriptPathTxt.Text.Trim() != "" && scriptCmdTxt.Text.Trim() != "")
             {
@@ -138,6 +145,23 @@ namespace CustomWindows
             {
                 ScriptList.Items.Remove(selectedItem);
             }
+        }
+
+        private void Save_Script_To_File()
+        {
+            string path = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData;
+            string fileName = "scripts.json";
+            string filePath = System.IO.Path.Combine(path, fileName);
+
+            Script script = new Script();
+            script.Name = scriptNameTxt.Text;
+            script.Cmd = scriptCmdTxt.Text;
+
+            string fileContent = JsonConvert.SerializeObject(script);
+
+            System.IO.File.WriteAllText(filePath, "{\n");
+
+
         }
     }
 }
