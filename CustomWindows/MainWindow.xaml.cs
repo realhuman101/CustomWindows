@@ -166,8 +166,63 @@ namespace CustomWindows
             ComboBox_SelectionChanged(sender, args);
         }
 
+        private void Reset_Fields()
+        {
+            scriptNameTxt.Text = "";
+            scriptPathTxt.Text = "";
+            scriptCmdTxt.Text = "";
+
+            execSelection.SelectedValue = "";
+            RunCondition.SelectedValue = "";
+
+            customWrite = true;
+            condition = null;
+            conditionRequirement = false;
+
+            ConditionRequirementLabel.Visibility = Visibility.Collapsed;
+            ConditionRequirements.Visibility = Visibility.Collapsed;
+            conditionTime.Visibility = Visibility.Collapsed;
+        }
+
+        private bool Check_Condition_Filled()
+        {
+            switch (condition)
+            {
+                case null:
+                    return false;
+                case 0:
+                    return true;
+                case 1:
+                    if (ConditionRequirements.SelectedItem == "" || ConditionRequirements.SelectedItem == null)
+                    {
+                        return false;
+                    } else
+                    {
+                        return true;
+                    }
+                case 2:
+                    string text = conditionTime.Text;
+                    string format = "HH:mm";
+                    CultureInfo invariant = System.Globalization.CultureInfo.InvariantCulture;
+                    DateTime dt;
+                    if (DateTime.TryParseExact(text, format, invariant, DateTimeStyles.None, out dt))
+                    {
+                        return true;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Please input a correct time \n24 hour in the format HH:mm");
+                        return false;
+                    }
+                default:
+                    return false;
+            }
+        }
+
         private void Add_Script(object sender, RoutedEventArgs e)
         {
+            conditionRequirement = Check_Condition_Filled();
+
             if (scriptNameTxt.Text.Trim() != "" && scriptPathTxt.Text.Trim() != "" && scriptCmdTxt.Text.Trim() != "" && condition != null && conditionRequirement == true)
             {
                 // Check names are unique
@@ -191,6 +246,9 @@ namespace CustomWindows
                 ScriptList.Items.Add(script);
 
                 Save_Script_To_File();
+
+                // Reset old fields
+                Reset_Fields();
             } else
             {
                 MessageBox.Show("Please fill in all fields");
@@ -243,6 +301,8 @@ namespace CustomWindows
 
             switch (selected)
             {
+                case null:
+                    break;
                 case "On Computer Start":
                     condition = 0;
                     conditionRequirement = true;
