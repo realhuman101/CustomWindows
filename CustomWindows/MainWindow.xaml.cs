@@ -15,6 +15,7 @@ using System.Text.Json.Serialization;
 using System.IO;
 using System.Text.Json;
 using System.Linq;
+using Microsoft.WindowsAPICodePack.Shell;
 
 namespace CustomWindows
 {
@@ -252,6 +253,20 @@ namespace CustomWindows
                     condition = 1;
 
                     ConditionRequirementLabel.Content = "App";
+
+                    // GUID taken from https://learn.microsoft.com/en-us/windows/win32/shell/knownfolderid
+                    var FOLDERID_AppsFolder = new Guid("{1e87508d-89c2-42f0-8a7e-645a0f50ca58}");
+
+                    ShellObject appsFolder = (ShellObject)KnownFolderHelper.FromKnownFolderId(FOLDERID_AppsFolder);
+
+                    foreach (var app in (IKnownFolder)appsFolder)
+                    {
+                        string name = app.Name;
+
+                        ComboBoxItem appItem = new ComboBoxItem();
+                        appItem.Content = name;
+                        ConditionRequirements.Items.Add(appItem);
+                    }
                     break;
                 case "Certain Time":
                     condition = 2;
