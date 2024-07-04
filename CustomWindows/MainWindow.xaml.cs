@@ -41,6 +41,7 @@ namespace CustomWindows
     public partial class MainWindow : Window {
         private bool customWrite = true;
         public Scripts scripts = new Scripts();
+        private int? condition = null;
 
         public MainWindow()
         {
@@ -164,7 +165,7 @@ namespace CustomWindows
 
         private void Add_Script(object sender, RoutedEventArgs e)
         {
-            if (scriptNameTxt.Text.Trim() != "" && scriptPathTxt.Text.Trim() != "" && scriptCmdTxt.Text.Trim() != "")
+            if (scriptNameTxt.Text.Trim() != "" && scriptPathTxt.Text.Trim() != "" && scriptCmdTxt.Text.Trim() != "" && condition != null)
             {
                 // Check names are unique
                 if (ScriptList.Items.Count > 0)
@@ -222,6 +223,7 @@ namespace CustomWindows
             Script script = new Script();
             script.Name = scriptNameTxt.Text;
             script.Cmd = scriptCmdTxt.Text;
+            script.Condition = condition ?? 0;
 
             scripts.AllScripts.Add(script);
             
@@ -230,6 +232,27 @@ namespace CustomWindows
             System.IO.File.WriteAllText(filePath, serializer);
 
             //MessageBox.Show("Script saved"); // Debugging
+        }
+
+        private void RunCondition_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string selected = (e.AddedItems[0] as ComboBoxItem).Content as string;
+
+            switch (selected)
+            {
+                case "On Computer Start":
+                    condition = 0;
+                    break;
+                case "On App Start":
+                    condition = 1;
+                    break;
+                case "Certain Time":
+                    condition = 2;
+                    break;
+                case "Always On":
+                    condition = 3;
+                    break;
+            }
         }
     }
 }

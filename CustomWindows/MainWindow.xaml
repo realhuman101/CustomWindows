@@ -69,7 +69,7 @@
                     <extToolkit:WatermarkTextBox Watermark="Enter Script Name" Grid.Column="1" HorizontalAlignment="Left" Margin="388,74,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="378" x:Name="scriptNameTxt"/>
                     <Button Grid.Column="1" Content="Delete Selection" HorizontalAlignment="Left" Margin="0,243,0,0" VerticalAlignment="Top" Click="Delete_Selection"/>
                     <Label Grid.Column="1" Content="Condition to Run" HorizontalAlignment="Left" Margin="379,213,0,0" VerticalAlignment="Top"/>
-                    <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="394,237,0,0" VerticalAlignment="Top" Width="372" x:Name="RunCondition">
+                    <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="394,237,0,0" VerticalAlignment="Top" Width="372" x:Name="RunCondition" SelectionChanged="RunCondition_SelectionChanged">
                         <ComboBoxItem Content="On Computer Start"/>
                         <ComboBoxItem Content="On App Start"/>
                         <ComboBoxItem Content="Certain Time"/>
