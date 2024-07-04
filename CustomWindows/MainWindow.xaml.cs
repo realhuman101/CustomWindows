@@ -42,6 +42,7 @@ namespace CustomWindows
         private bool customWrite = true;
         public Scripts scripts = new Scripts();
         private int? condition = null;
+        private bool conditionRequirement = false;
 
         public MainWindow()
         {
@@ -165,7 +166,7 @@ namespace CustomWindows
 
         private void Add_Script(object sender, RoutedEventArgs e)
         {
-            if (scriptNameTxt.Text.Trim() != "" && scriptPathTxt.Text.Trim() != "" && scriptCmdTxt.Text.Trim() != "" && condition != null)
+            if (scriptNameTxt.Text.Trim() != "" && scriptPathTxt.Text.Trim() != "" && scriptCmdTxt.Text.Trim() != "" && condition != null && conditionRequirement == true)
             {
                 // Check names are unique
                 if (ScriptList.Items.Count > 0)
@@ -242,17 +243,32 @@ namespace CustomWindows
             {
                 case "On Computer Start":
                     condition = 0;
-                    break;
+                    conditionRequirement = true;
+
+                    ConditionRequirementLabel.Visibility = Visibility.Collapsed;
+                    ConditionRequirements.Visibility = Visibility.Collapsed;
+                    return;
                 case "On App Start":
                     condition = 1;
+
+                    ConditionRequirementLabel.Content = "App";
                     break;
                 case "Certain Time":
                     condition = 2;
+
+                    ConditionRequirementLabel.Content = "Time";
                     break;
                 case "Always On":
                     condition = 3;
-                    break;
+                    conditionRequirement = true;
+
+                    ConditionRequirementLabel.Visibility = Visibility.Collapsed;
+                    ConditionRequirements.Visibility = Visibility.Collapsed;
+                    return;
             }
+
+            ConditionRequirementLabel.Visibility = Visibility.Visible;
+            ConditionRequirements.Visibility = Visibility.Visible;
         }
     }
 }
