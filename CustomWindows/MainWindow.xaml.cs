@@ -16,6 +16,7 @@ using System.IO;
 using System.Text.Json;
 using System.Linq;
 using Microsoft.WindowsAPICodePack.Shell;
+using System.Globalization;
 
 namespace CustomWindows
 {
@@ -248,7 +249,7 @@ namespace CustomWindows
 
                     ConditionRequirementLabel.Visibility = Visibility.Collapsed;
                     ConditionRequirements.Visibility = Visibility.Collapsed;
-                    return;
+                    break;
                 case "On App Start":
                     condition = 1;
 
@@ -267,11 +268,18 @@ namespace CustomWindows
                         appItem.Content = name;
                         ConditionRequirements.Items.Add(appItem);
                     }
+
+                    ConditionRequirementLabel.Visibility = Visibility.Visible;
+                    ConditionRequirements.Visibility = Visibility.Visible;
                     break;
                 case "Certain Time":
                     condition = 2;
 
                     ConditionRequirementLabel.Content = "Time";
+
+                    ConditionRequirementLabel.Visibility = Visibility.Visible;
+                    conditionTime.Visibility = Visibility.Visible;
+
                     break;
                 case "Always On":
                     condition = 3;
@@ -279,11 +287,8 @@ namespace CustomWindows
 
                     ConditionRequirementLabel.Visibility = Visibility.Collapsed;
                     ConditionRequirements.Visibility = Visibility.Collapsed;
-                    return;
+                    break;
             }
-
-            ConditionRequirementLabel.Visibility = Visibility.Visible;
-            ConditionRequirements.Visibility = Visibility.Visible;
         }
     }
 }

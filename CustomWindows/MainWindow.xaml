@@ -78,6 +78,7 @@
                     <Label Grid.Column="1" Content="" HorizontalAlignment="Left" Margin="379,264,0,0" VerticalAlignment="Top" x:Name="ConditionRequirementLabel" Visibility="Collapsed"/>
                     <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="394,288,0,0" VerticalAlignment="Top" Width="372" x:Name="ConditionRequirements" Visibility="Collapsed">
                     </ComboBox>
+                    <extToolkit:WatermarkTextBox Watermark="Enter Time" Grid.Column="1" HorizontalAlignment="Left" Margin="394,288,0,0" VerticalAlignment="Top" Width="372" Visibility="Collapsed" x:Name="conditionTime"/>
                 </Grid>
             </TabItem>
         </TabControl>
