@@ -115,9 +115,9 @@ namespace CustomWindows
                 {
                     switch (script.Condition)
                     {
-                        case 1: // App Start
+                        //case 1: // App Start
                             
-                            break;
+                        //    break;
                         case 2: // Certain Time
                             if (script.ConditionRequirement == currTime)
                             {
