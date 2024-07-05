@@ -18,6 +18,7 @@ using System.Linq;
 using Microsoft.WindowsAPICodePack.Shell;
 using System.Globalization;
 using Xceed.Wpf.Toolkit.Primitives;
+using System.Threading;
 
 namespace CustomWindows
 {
@@ -80,6 +81,32 @@ namespace CustomWindows
                     }
                 }
             }
+
+            Thread scriptRunner = new Thread(new ParameterizedThreadStart(Active_Script));
+        }
+
+        private void Active_Script(object? parameter)
+        {
+            while (true)
+            {
+                string currTime = DateTime.Now.ToString("HH:mm");
+
+                foreach (Script script in scripts.AllScripts)
+                {
+                    if (script.Condition == 2)
+                    {
+                        if (script.ConditionRequirement == currTime)
+                        {
+                            Run_Script(script);
+                        }
+                    }
+                }   
+            }
+        }
+
+        private void Run_Script(Script script)
+        {
+            System.Diagnostics.Process.Start("CMD.exe", script.Cmd);
         }
 
         private void Browse_Files(object sender, RoutedEventArgs e)
