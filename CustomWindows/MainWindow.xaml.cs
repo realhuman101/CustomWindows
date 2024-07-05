@@ -298,6 +298,7 @@ namespace CustomWindows
         private void RunCondition_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string selected = (e.AddedItems[0] as ComboBoxItem).Content as string;
+            conditionTime.Visibility = Visibility.Collapsed;
 
             switch (selected)
             {
