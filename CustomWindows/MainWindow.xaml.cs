@@ -17,6 +17,7 @@ using System.Text.Json;
 using System.Linq;
 using Microsoft.WindowsAPICodePack.Shell;
 using System.Globalization;
+using Xceed.Wpf.Toolkit.Primitives;
 
 namespace CustomWindows
 {
@@ -297,7 +298,17 @@ namespace CustomWindows
 
         private void RunCondition_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            string selected = (e.AddedItems[0] as ComboBoxItem).Content as string;
+            string? selected = null;
+
+            try
+            {
+                selected = (e.AddedItems[0] as ComboBoxItem).Content as string;
+            }
+            catch (IndexOutOfRangeException)
+            {
+                selected = null;
+            }
+
             conditionTime.Visibility = Visibility.Collapsed;
 
             switch (selected)
@@ -306,7 +317,6 @@ namespace CustomWindows
                     break;
                 case "On Computer Start":
                     condition = 0;
-                    conditionRequirement = true;
 
                     ConditionRequirementLabel.Visibility = Visibility.Collapsed;
                     ConditionRequirements.Visibility = Visibility.Collapsed;
@@ -344,7 +354,6 @@ namespace CustomWindows
                     break;
                 case "Always On":
                     condition = 3;
-                    conditionRequirement = true;
 
                     ConditionRequirementLabel.Visibility = Visibility.Collapsed;
                     ConditionRequirements.Visibility = Visibility.Collapsed;
