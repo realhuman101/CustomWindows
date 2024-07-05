@@ -58,6 +58,8 @@ namespace CustomWindows
 
             //MessageBox.Show(filePath); // Debugging
 
+            AddApplicationToCurrentUserStartup();
+
             if (File.Exists(filePath))
             {
                 string jsonString = File.ReadAllText(filePath);
@@ -83,6 +85,24 @@ namespace CustomWindows
             }
 
             Thread scriptRunner = new Thread(new ParameterizedThreadStart(Active_Script));
+
+            foreach (Script script in scripts.AllScripts)
+            {
+                if (script.Condition == 0) // Computer Start
+                {
+                    Run_Script(script);
+                }
+            }
+        }
+
+        public static void AddApplicationToCurrentUserStartup()
+        {
+            // From https://stackoverflow.com/questions/5089601/how-to-run-a-c-sharp-application-at-windows-startup/5527457#5527457
+
+            using (RegistryKey key = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true))
+            {
+                key.SetValue("CustomWindows", "\"" + System.Reflection.Assembly.GetExecutingAssembly().Location + "\"");
+            }
         }
 
         private void Active_Script(object? parameter)
@@ -95,6 +115,9 @@ namespace CustomWindows
                 {
                     switch (script.Condition)
                     {
+                        case 1: // App Start
+                            
+                            break;
                         case 2: // Certain Time
                             if (script.ConditionRequirement == currTime)
                             {
