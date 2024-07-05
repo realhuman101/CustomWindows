@@ -93,12 +93,17 @@ namespace CustomWindows
 
                 foreach (Script script in scripts.AllScripts)
                 {
-                    if (script.Condition == 2)
+                    switch (script.Condition)
                     {
-                        if (script.ConditionRequirement == currTime)
-                        {
+                        case 2: // Certain Time
+                            if (script.ConditionRequirement == currTime)
+                            {
+                                Run_Script(script);
+                            }
+                            break;
+                        case 3: // Always On
                             Run_Script(script);
-                        }
+                            break;
                     }
                 }   
             }
