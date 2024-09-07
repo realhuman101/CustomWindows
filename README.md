@@ -10,6 +10,7 @@
 	- [Table of Contents](#table-of-contents)
 	- [Introduction](#introduction)
 	- [Contributing](#contributing)
+	- [Images](#images)
 
 ## Introduction
 
@@ -26,3 +27,7 @@ If you want to contribute to this project, please follow the guidelines below:
 3. Make your changes and commit them
 4. Push the new branch to your fork
 5. Submit a pull request
+
+## Images
+
+![Image](assets/img.png)
